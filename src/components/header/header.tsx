@@ -9,6 +9,6 @@ export const Header = ():ReactElement => {
   const title:string = "25 + 5 Clock";
 
   return (
-    <div>{ title }</div>
+    <div id="header-div">{ title }</div>
   );
 }
