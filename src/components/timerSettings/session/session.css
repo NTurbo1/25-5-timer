@@ -1,0 +1,15 @@
+#session-length-settings {
+  width: 300px;
+  color: white;
+}
+
+#session-length-title {
+  margin: 0;
+  text-align: center;
+}
+
+#session-time-display  {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
