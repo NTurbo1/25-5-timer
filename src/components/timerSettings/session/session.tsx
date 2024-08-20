@@ -1,18 +1,34 @@
-import { ReactElement } from "react";
+import { ReactElement, useContext } from "react";
+import { TimeContext } from "../../../App";
 
 import './session.css'
 
 export const SessionLength = ():ReactElement => {
 
-  const sessionTime:number = 1;
+
+  const timeContextProps = useContext(TimeContext)
+
+  if (!timeContextProps) {
+    throw new Error("TimeContextProps is undefined or null in SessionLength component.")
+  }
+
+  const { timeConfigs, setTimeConfigs } = timeContextProps;
+
+  const increaseSessionLength = () => {
+    setTimeConfigs(prev => ({ ...prev, sessionTime: prev.sessionTime + 1 }))
+  }
+
+  const decreaseSessionLength = () => {
+    setTimeConfigs(prev => ({ ...prev, sessionTime: prev.sessionTime - 1 }))
+  }
 
   return (
     <div id='session-length-settings'>
       <h2 id='session-length-title'>Session Length</h2>
       <div id='session-time-display'>
-        <div id='up-arrow-session'>&#9650;</div>
-        <div id='session-time-minutes'>{ sessionTime }</div>
-        <div id='down-arrow-session'>&#9660;</div>
+        <button id='up-arrow-session' onClick={ increaseSessionLength }>&#9650;</button>
+        <div id='session-time-minutes'>{ timeConfigs.sessionTime }</div>
+        <button id='down-arrow-session' onClick={ decreaseSessionLength }>&#9660;</button>
       </div>
     </div>
   )
