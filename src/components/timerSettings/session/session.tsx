@@ -15,11 +15,15 @@ export const SessionLength = ():ReactElement => {
   const { timeConfigs, setTimeConfigs } = timeContextProps;
 
   const increaseSessionLength = () => {
-    setTimeConfigs(prev => ({ ...prev, sessionTime: prev.sessionTime + 1 }))
+    if (!timeConfigs.paused) {
+      setTimeConfigs(prev => ({ ...prev, sessionTime: prev.sessionTime + 1 }))
+    }
   }
 
   const decreaseSessionLength = () => {
-    setTimeConfigs(prev => ({ ...prev, sessionTime: prev.sessionTime - 1 }))
+    if (!timeConfigs.paused) {
+      setTimeConfigs(prev => ({ ...prev, sessionTime: prev.sessionTime - 1 }))
+    }
   }
 
   return (

@@ -6,6 +6,9 @@ import { Timer } from './components/timer/index';
 interface TimeConfigs {
   breakTime: number;
   sessionTime: number;
+  paused: true;
+  currentMinute: number;
+  currentSeconds: number;
 }
 
 interface TimeContextProps {
@@ -18,7 +21,10 @@ export const TimeContext = createContext<TimeContextProps | undefined>(undefined
 export default function App() {
   const [timeConfigs, setTimeConfigs] = useState<TimeConfigs>({
     breakTime: 5,
-    sessionTime: 25
+    sessionTime: 25,
+    paused: true,
+    currentMinute: 25,
+    currentSeconds: 60
   });
 
   return ( 
