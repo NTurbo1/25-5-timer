@@ -14,13 +14,13 @@ export const BreakLength = ():ReactElement => {
   const { timeConfigs, setTimeConfigs } = timeContextProps;
 
   const increaseBreakLength = () => {
-    if (!timeConfigs.paused) {
+    if (timeConfigs.paused) {
       setTimeConfigs(prev => ({...prev, breakTime: prev.breakTime + 1}));
     }
   };
 
   const decreaseBreakLength = () => {
-    if (!timeConfigs.paused) {
+    if (timeConfigs.paused) {
       setTimeConfigs(prev => ({ ...prev, breakTime: prev.breakTime - 1 }));
     }
   }
