@@ -1,6 +1,7 @@
 import React, { createContext, useState} from 'react'
 import { Header } from './components/header/index';
 import { TimerSettings } from './components/timerSettings/index';
+import { Timer } from './components/timer/index';
 
 interface TimeConfigs {
   breakTime: number;
@@ -24,6 +25,7 @@ export default function App() {
     <TimeContext.Provider value={{ timeConfigs: timeConfigs, setTimeConfigs: setTimeConfigs }}>
       <Header />
       <TimerSettings /> 
+      <Timer />
     </TimeContext.Provider>
   )
 }
