@@ -22,7 +22,13 @@ export const SessionLength = ():ReactElement => {
 
   const decreaseSessionLength = () => {
     if (timeConfigs.paused) {
-      setTimeConfigs(prev => ({ ...prev, sessionTime: prev.sessionTime - 1 }))
+      setTimeConfigs(prev => {
+        if (prev.sessionTime > 1) {
+          return { ...prev, sessionTime: prev.sessionTime - 1 };
+        }
+
+        return prev;
+      })
     }
   }
 

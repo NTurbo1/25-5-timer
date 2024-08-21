@@ -21,7 +21,13 @@ export const BreakLength = ():ReactElement => {
 
   const decreaseBreakLength = () => {
     if (timeConfigs.paused) {
-      setTimeConfigs(prev => ({ ...prev, breakTime: prev.breakTime - 1 }));
+      setTimeConfigs(prev => {
+        if (prev.breakTime > 1) {
+          return { ...prev, breakTime: prev.breakTime - 1 }
+        }
+
+        return prev;
+      });
     }
   }
 
