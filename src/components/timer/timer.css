@@ -25,4 +25,10 @@
 
 #time {
   font-size: 80px;
+  margin-bottom: 20px;
+}
+
+#control-timer-box {
+  display: flex;
+  gap: 50px;
 }
