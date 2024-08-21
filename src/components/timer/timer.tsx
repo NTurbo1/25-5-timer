@@ -30,6 +30,11 @@ export const Timer = () => {
       setMinutes(isBreak ? timeConfigs.sessionTime : timeConfigs.breakTime);
       setSeconds(0);
       alarmSound.play();
+      const time = document.getElementById("time");
+      time!.style.color = "white"; 
+    } else if (minutes === 0 && seconds === 59) {
+      const time = document.getElementById("time");
+      time!.style.color = "red";
     }
   }, [minutes, seconds, isBreak, timeConfigs.sessionTime, timeConfigs.breakTime]);
 
