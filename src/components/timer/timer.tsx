@@ -15,7 +15,9 @@ export const Timer = () => {
   const [minutes, setMinutes] = useState<number>(timeConfigs.sessionTime);
   const [seconds, setSeconds] = useState<number>(0);
   const [isBreak, setIsBreak] = useState<boolean>(false);
-  const intervalRef = useRef<number | null>(null); 
+  const intervalRef = useRef<number | null>(null);
+  
+  const alarmSound = new Audio("src/assets/audio/rooster-alarm.wav");
 
   useEffect(() => {
     setMinutes(timeConfigs.sessionTime);
@@ -27,6 +29,7 @@ export const Timer = () => {
       setIsBreak(prev => !prev);
       setMinutes(isBreak ? timeConfigs.sessionTime : timeConfigs.breakTime);
       setSeconds(0);
+      alarmSound.play();
     }
   }, [minutes, seconds, isBreak, timeConfigs.sessionTime, timeConfigs.breakTime]);
 
