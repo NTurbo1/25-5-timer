@@ -30,11 +30,9 @@ export const Timer = () => {
       setMinutes(isBreak ? timeConfigs.sessionTime : timeConfigs.breakTime);
       setSeconds(0);
       alarmSound.play();
-      const time = document.getElementById("time");
-      time!.style.color = "white"; 
+      changeTimeDisplayColorTo("white"); 
     } else if (minutes === 0 && seconds === 59) {
-      const time = document.getElementById("time");
-      time!.style.color = "red";
+      changeTimeDisplayColorTo("red");
     }
   }, [minutes, seconds, isBreak, timeConfigs.sessionTime, timeConfigs.breakTime]);
 
@@ -78,6 +76,11 @@ export const Timer = () => {
 
   function togglePauseResumeTimer(): void {
     setTimeConfigs(prev => ({ ...prev, paused: !prev.paused }));
+  }
+
+  function changeTimeDisplayColorTo(color:string):void {
+    const time = document.getElementById("time");
+    time!.style.color = color;
   }
 
   return (
